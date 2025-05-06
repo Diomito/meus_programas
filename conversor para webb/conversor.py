@@ -3,14 +3,14 @@ from tkinter import filedialog, messagebox
 from PIL import Image
 
 def convert_to_webp():
-    file_path = filedialog.askopenfilename(filetypes=[("Image files", "*.png;*.jpg;*.jpeg")])
+    file_path = filedialog.askopenfilename(filetypes=[("Image files", "*.png;*.jpg;*.jpeg; .heic")])
     if not file_path:
         return
     
     try:
         with Image.open(file_path) as img:
-            webp_path = file_path.rsplit(".", 1)[0] + ".webp"
-            img.save(webp_path, "WEBP")
+            webp_path = file_path.rsplit(".", 1)[0] + ".jpg"
+            img.save(webp_path, "jpg")
             messagebox.showinfo("Conversion Successful", f"Image converted and saved as {webp_path}")
     except Exception as e:
         messagebox.showerror("Error", f"An error occurred: {e}")
